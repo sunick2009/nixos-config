@@ -2,12 +2,13 @@ _:
 
 [
   # Development Tools
-  "homebrew/cask/docker"
+  #"homebrew/cask/docker"
+  "homebrew/cask/orbstack"
   #"visual-studio-code"
 
   # Productivity Tools
   #"raycast"
-
+  "homebrew/cask/lm-studio"
   # Browsers
   #"google-chrome"
 
