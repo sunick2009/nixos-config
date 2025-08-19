@@ -1,0 +1,68 @@
+# Nix build results
+result
+result-*
+
+# Nix garbage collection
+.gcroots
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor files
+*~
+.#*
+\#*\#
+*.swp
+*.swo
+*.tmp
+*.bak
+
+# SSH keys and secrets (should be managed separately)
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+!*.pub
+
+# Temporary files
+.direnv/
+.envrc
+*.log
+
+# macOS specific
+.AppleDouble
+.LSOverride
+Icon
+
+# Nix shell files
+shell.nix.bak
+*.nix.bak
+
+# Home Manager generations
+.hm-backup/
+
+# Age/agenix temporary files
+*.age.tmp
+
+# Build artifacts
+dist/
+build/
+
+# IDE files
+.vscode/
+.idea/
+*.iml
+
+# Temporary username file (from your apply scripts)
+/tmp/username.txt
+username.txt
+
+# Any local overrides
+local.nix
+override.nix
