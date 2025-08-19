@@ -61,6 +61,17 @@ in
       };
       programs = {} // import ../shared/home-manager.nix { inherit config pkgs lib; };
 
+      services.gpg-agent = {
+        enable = true;
+        pinentry.package = pkgs.pinentry-curses;
+        enableSshSupport = true;
+        defaultCacheTtl = 28800; # 8 hours
+        maxCacheTtl = 86400;     # 24 hours
+        extraConfig = ''
+          allow-loopback-pinentry
+        '';
+      };
+
       # Marked broken Oct 20, 2022 check later to remove this
       ## https://github.com/nix-community/home-manager/issues/3344
       manual.manpages.enable = false;

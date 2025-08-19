@@ -81,6 +81,14 @@ let name = "sunick2009";
       commit.gpgsign = true;
       pull.rebase = true;
       rebase.autoStash = true;
+      user.signingkey = "229B5A8D63E1795F";
+    };
+  };
+
+  gpg = {
+    enable = true;
+    settings = {
+      trust-model = "tofu+pgp";
     };
   };
 

@@ -114,4 +114,15 @@ in
 
   programs = shared-programs // { gpg.enable = true; };
 
+  services.gpg-agent = {
+    enable = true;
+    pinentry.package = pkgs.pinentry-curses;
+    enableSshSupport = true;
+    defaultCacheTtl = 28800; # 8 hours
+    maxCacheTtl = 86400;     # 24 hours
+    extraConfig = ''
+      allow-loopback-pinentry
+    '';
+  };
+
 }
