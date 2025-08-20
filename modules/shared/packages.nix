@@ -53,6 +53,11 @@ with pkgs; [
   zsh-powerlevel10k
 
   # Python packages
-  python3
   virtualenv
+  python312
+  pkgs.python313Packages.pip
+  pipx
+
+  # go packages
+  go
 ]
