@@ -96,10 +96,10 @@ in
         { path = "/Applications/Tabby.app/"; }
         { path = "/System/Applications/System Settings.app/"; }
 
-        {
+        /* {
           path = toString myEmacsLauncher;
           section = "others";
-        }
+        } */
         {
           path = "${config.users.users.${user}.home}/Downloads";
           section = "others";
