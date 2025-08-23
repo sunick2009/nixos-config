@@ -23,7 +23,7 @@ _:
   # "syncthing"
   # "1password"
   # "rectangle"
-  "homebrew/cask/eul"
+  "homebrew/cask/stats"
 
   # Entertainment Tools - Examples (uncomment as needed)
   "spotify"
