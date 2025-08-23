@@ -24,6 +24,7 @@ _:
   # "1password"
   # "rectangle"
   "homebrew/cask/stats"
+  "homebrew/cask/rustdesk"
 
   # Entertainment Tools - Examples (uncomment as needed)
   "spotify"
