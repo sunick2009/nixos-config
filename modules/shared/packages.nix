@@ -54,6 +54,7 @@ with pkgs; [
   tmux
   unrar
   unzip
+  neovim
 
   # Python packages
   virtualenv
