@@ -35,6 +35,10 @@ with pkgs; [
   noto-fonts
   noto-fonts-emoji
   meslo-lgs-nf
+  jetbrains-mono
+  sarasa-gothic
+  source-han-sans
+  corefonts
 
   # Node.js development tools
   nodejs_24

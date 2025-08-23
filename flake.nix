@@ -102,17 +102,6 @@
             ./hosts/darwin
             # 由 flake input 提供 emacs-overlay
             { nixpkgs.overlays = [ emacs-overlay.overlays.default ]; }
-            # Fonts: JetBrains Mono (含 NL), Sarasa Gothic TC, Source Han Sans, Courier New (via corefonts)
-            ({ pkgs, ... }: {
-              fonts = {
-                packages = with pkgs; [
-                  jetbrains-mono
-                  sarasa-gothic
-                  source-han-sans
-                  corefonts
-                ];
-              };
-            })
           ];
         }
       );
