@@ -4,6 +4,9 @@ with pkgs;
 let shared-packages = import ../shared/packages.nix { inherit pkgs; }; in
 shared-packages ++ [
 
+  # Network tools (Linux-specific)
+  iproute2
+
   # Security and authentication
   yubikey-agent
   keepassxc
