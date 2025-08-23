@@ -55,6 +55,7 @@ with pkgs; [
   unrar
   unzip
   neovim
+  wireguard-tools
 
   # Python packages
   virtualenv
