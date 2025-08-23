@@ -30,7 +30,12 @@ in
     username = "${user}";
     homeDirectory = "/home/${user}";
     packages = pkgs.callPackage ./packages.nix {};
-    file = shared-files // import ./files.nix { inherit user; };
+    file = shared-files // import ./files.nix { inherit user; } // {
+      # tmux configuration
+      ".tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Code/my-dotfiles/.tmux.conf";
+      # neovim configuration
+      ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Code/my-dotfiles/.config/nvim";
+    };
     stateVersion = "21.05";
   };
 
