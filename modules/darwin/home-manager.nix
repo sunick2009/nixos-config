@@ -71,7 +71,7 @@ in
 
       services.gpg-agent = {
         enable = true;
-        pinentry.package = pkgs.pinentry-curses;
+        pinentry.package = pkgs.pinentry_mac;
         enableSshSupport = true;
         defaultCacheTtl = 28800; # 8 hours
         maxCacheTtl = 86400;     # 24 hours
