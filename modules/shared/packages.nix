@@ -62,7 +62,10 @@ with pkgs; [
   python312
   pkgs.python313Packages.pip
   pipx
-
+  uv
+  # Other Development Tools
+  codex
+  
   # go packages
   go
 ]
