@@ -60,7 +60,7 @@ in
           additionalFiles
           { "emacs-launcher.command".source = myEmacsLauncher; }
           # tmux configuration
-          { ".tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Code/my-dotfiles/.tmux.conf"; }
+          #{ ".tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Code/my-dotfiles/.tmux.conf"; }
           # neovim configuration
           { ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Code/my-dotfiles/.config/nvim"; }
         ];
@@ -116,4 +116,9 @@ in
       ];
     };
   };
+  programs.tmux = {
+  enable = true;
+  # ... other tmux options ...
+   # Replace zsh with your desired shell (e.g., fish, bash)
+};
 }

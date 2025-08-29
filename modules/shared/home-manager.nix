@@ -276,9 +276,9 @@ let name = "sunick2009";
 
   tmux = {
     enable = true;
+    
     plugins = with pkgs.tmuxPlugins; [
       vim-tmux-navigator
-      sensible
       yank
       prefix-highlight
       {
@@ -311,6 +311,8 @@ let name = "sunick2009";
     escapeTime = 10;
     historyLimit = 50000;
     extraConfig = ''
+      # start zsh as shell
+      set -g default-command ${pkgs.zsh}/bin/zsh
       # Remove Vim mode delays
       set -g focus-events on
 
