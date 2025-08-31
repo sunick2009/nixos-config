@@ -25,6 +25,7 @@ _:
   # "rectangle"
   "homebrew/cask/stats"
   "homebrew/cask/rustdesk"
+  "homebrew/cask/anydesk"
 
   # Entertainment Tools - Examples (uncomment as needed)
   "spotify"
