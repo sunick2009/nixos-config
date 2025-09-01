@@ -56,6 +56,8 @@ with pkgs; [
   unrar
   unzip
   neovim
+
+  # Networking tools
   wireguard-tools
 
   # Python packages

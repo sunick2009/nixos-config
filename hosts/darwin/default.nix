@@ -36,6 +36,7 @@ let user = "susu"; in
 
   # Load configuration that is shared across systems
   environment.systemPackages = with pkgs; [
+    netbird
     emacs-unstable
     agenix.packages."${pkgs.system}".default
   ] ++ (import ../../modules/shared/packages.nix { inherit pkgs; });
@@ -51,6 +52,20 @@ let user = "susu"; in
     StandardErrorPath = "/tmp/emacs.err.log";
     StandardOutPath = "/tmp/emacs.out.log";
   };
+
+launchd.daemons.netbird = {
+  script = ''
+    /bin/mkdir -p /var/run/netbird
+    exec ${pkgs.netbird}/bin/netbird \
+         service run --daemon-addr unix:///var/run/netbird/sock
+  '';
+  serviceConfig = {
+    KeepAlive = true;
+    RunAtLoad = true;
+    StandardOutPath   = "/var/log/netbird.out.log";
+    StandardErrorPath = "/var/log/netbird.err.log";
+  };
+};
 
   system = {
     checks.verifyNixPath = false;
