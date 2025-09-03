@@ -103,6 +103,7 @@ in
         { path = "/Applications/Visual Studio Code.app"; }
         { path = "/Applications/Tabby.app/"; }
         { path = "/System/Applications/System Settings.app/"; }
+        { path = "/Applications/Loopback.app/"; }
 
         /* {
           path = toString myEmacsLauncher;

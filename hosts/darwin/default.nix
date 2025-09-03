@@ -7,6 +7,7 @@ let user = "susu"; in
   imports = [
     ../../modules/darwin/secrets.nix
     ../../modules/darwin/home-manager.nix
+    ../../modules/darwin/audio-loopback.nix
     ../../modules/shared
      agenix.darwinModules.default
   ];
