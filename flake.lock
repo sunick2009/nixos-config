@@ -207,6 +207,22 @@
         "type": "github"
       }
     },
+    "homebrew-fuse": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1756655492,
+        "narHash": "sha256-vT0bEwM4lfeeVt9S2/FM0pkM3SJ8RW9NHxG2WB7cEi0=",
+        "owner": "gromgit",
+        "repo": "homebrew-fuse",
+        "rev": "7315f0ba862601cc9db4a0cbd99246dfa360239d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "gromgit",
+        "repo": "homebrew-fuse",
+        "type": "github"
+      }
+    },
     "nix-homebrew": {
       "inputs": {
         "brew-src": "brew-src"
@@ -315,6 +331,7 @@
         "homebrew-bundle": "homebrew-bundle",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
+        "homebrew-fuse": "homebrew-fuse",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_4",
         "secrets": "secrets"

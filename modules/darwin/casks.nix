@@ -26,6 +26,8 @@ _:
   "homebrew/cask/stats"
   "homebrew/cask/rustdesk"
   "homebrew/cask/anydesk"
+  "homebrew/cask/macfuse"
+  "homebrew/cask/mounty"
 
   # Entertainment Tools - Examples (uncomment as needed)
   "spotify"
