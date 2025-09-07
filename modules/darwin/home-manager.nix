@@ -94,7 +94,7 @@ in
       entries = [
         { path = "/System/Applications/Launchpad.app/"; }
         { path = "/Applications/ForkLift.app/"; }
-        { path = "/System/Applications/Notes.app/"; }
+        { path = "/Applications/Obsidian.app/"; }
         { path = "/Applications/ChatGPT.app/"; }
         { path = "/Applications/Microsoft Outlook.app/"; }
         { path = "/Applications/Arc.app/"; }
