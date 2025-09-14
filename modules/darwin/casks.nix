@@ -11,6 +11,7 @@ _:
   "homebrew/cask/lm-studio"
   # Browsers
   #"google-chrome"
+  "windows-app"
 
   # Communication Tools - Examples (uncomment as needed)
   # "discord"
