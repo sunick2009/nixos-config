@@ -6,5 +6,7 @@ shared-packages ++ [
   dockutil
   aria2
   pinentry_mac
-  iina 
+  iina
+  # Disk usage analyzer
+  grandperspective
 ]
