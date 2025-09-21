@@ -29,7 +29,9 @@ _:
   "homebrew/cask/anydesk"
   "homebrew/cask/macfuse"
   "homebrew/cask/mounty"
-
+  # Control Mouse Sensitivity
+  "homebrew/cask/linearmouse"
+  
   # Entertainment Tools - Examples (uncomment as needed)
   "spotify"
   # "vlc"
