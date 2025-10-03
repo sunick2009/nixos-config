@@ -31,7 +31,7 @@ _:
   "homebrew/cask/mounty"
   # Control Mouse Sensitivity
   "homebrew/cask/linearmouse"
-  
+  "homebrew/cask/ghostty"
   # Entertainment Tools - Examples (uncomment as needed)
   "spotify"
   # "vlc"
