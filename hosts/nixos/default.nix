@@ -291,10 +291,12 @@ let user = "susu";
     dejavu_fonts
     emacs-all-the-icons-fonts
     feather-font # from overlay
-    jetbrains-mono
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.hack
     font-awesome
     noto-fonts
     noto-fonts-emoji
+    nerd-fonts.symbols-only
   ];
 
   environment.systemPackages = with pkgs; [

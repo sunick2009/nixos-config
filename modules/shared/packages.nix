@@ -32,7 +32,8 @@ with pkgs; [
   ffmpeg
   fd
   font-awesome
-  hack-font
+  nerd-fonts.jetbrains-mono
+  nerd-fonts.hack
   noto-fonts
   noto-fonts-emoji
   meslo-lgs-nf
