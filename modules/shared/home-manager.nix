@@ -54,7 +54,7 @@ let name = "sunick2009";
 
   git = {
     enable = true;
-    ignores = [ "*.swp" ];
+    ignores = [ "*.swp" ".DS_Store"  "**/.DS_Store"];
     userName = name;
     userEmail = email;
     lfs = {
