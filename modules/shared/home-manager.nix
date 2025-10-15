@@ -66,7 +66,7 @@ let name = "sunick2009";
 	    editor = "vim";
         autocrlf = "input";
       };
-      commit.gpgsign = true;
+      commit.gpgsign = false;
       pull.rebase = true;
       rebase.autoStash = true;
       user.signingkey = "229B5A8D63E1795F";
