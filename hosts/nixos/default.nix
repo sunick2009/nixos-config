@@ -295,7 +295,7 @@ let user = "susu";
     nerd-fonts.hack
     font-awesome
     noto-fonts
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     nerd-fonts.symbols-only
   ];
 

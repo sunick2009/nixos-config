@@ -35,7 +35,7 @@ with pkgs; [
   nerd-fonts.jetbrains-mono
   nerd-fonts.hack
   noto-fonts
-  noto-fonts-emoji
+  noto-fonts-color-emoji
   meslo-lgs-nf
   jetbrains-mono
   sarasa-gothic
