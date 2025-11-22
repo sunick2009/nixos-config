@@ -15,6 +15,7 @@ with pkgs; [
   wget
   zip
   inetutils
+  localsend
 
   # Encryption and security tools
   age
