@@ -85,7 +85,7 @@ launchd.daemons.netbird = {
         InitialKeyRepeat = 15;
 
         "com.apple.mouse.tapBehavior" = 1;
-        "com.apple.sound.beep.volume" = 4.0;
+        "com.apple.sound.beep.volume" = 0.6065307;
         "com.apple.sound.beep.feedback" = 0;
       };
 
