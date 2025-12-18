@@ -9,6 +9,9 @@ shared-packages ++ [
   iina
   # Disk usage analyzer
   grandperspective
+  # development tools
+  dbeaver-bin
+  claude-code
   # TUI File manager
   yazi
 

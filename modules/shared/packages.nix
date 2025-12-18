@@ -70,6 +70,8 @@ with pkgs; [
   uv
   # Other Development Tools
   codex
+  opencode
+  poetry
   
   # go packages
   go

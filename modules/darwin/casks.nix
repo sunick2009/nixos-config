@@ -5,6 +5,7 @@ _:
   #"homebrew/cask/docker"
   "homebrew/cask/orbstack"
   #"visual-studio-code"
+  "homebrew/cask/mockoon"
 
   # Productivity Tools
   #"raycast"
@@ -32,6 +33,7 @@ _:
   # Control Mouse Sensitivity
   "homebrew/cask/linearmouse"
   "homebrew/cask/ghostty"
+  "homebrew/cask/claude"
   # Entertainment Tools - Examples (uncomment as needed)
   "spotify"
   # "vlc"
