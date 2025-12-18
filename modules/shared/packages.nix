@@ -38,7 +38,6 @@ with pkgs; [
   noto-fonts
   noto-fonts-color-emoji
   meslo-lgs-nf
-  jetbrains-mono
   sarasa-gothic
   source-han-sans
   corefonts
