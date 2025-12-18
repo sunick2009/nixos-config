@@ -29,7 +29,7 @@ let name = "sunick2009";
     }
   ];
 
-  initExtraFirst = ''
+  initContent = lib.mkBefore ''
     if [[ -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
       . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
       . /nix/var/nix/profiles/default/etc/profile.d/nix.sh
@@ -56,12 +56,15 @@ let name = "sunick2009";
   git = {
     enable = true;
     ignores = [ "*.swp" ".DS_Store"  "**/.DS_Store"];
-    userName = name;
-    userEmail = email;
     lfs = {
       enable = true;
     };
-    extraConfig = {
+    settings = {
+      user = {
+        name = name;
+        email = email;
+        signingkey = "229B5A8D63E1795F";
+      };
       init.defaultBranch = "main";
       core = {
 	    editor = "vim";
@@ -70,7 +73,6 @@ let name = "sunick2009";
       commit.gpgsign = false;
       pull.rebase = true;
       rebase.autoStash = true;
-      user.signingkey = "229B5A8D63E1795F";
     };
   };
 
@@ -252,6 +254,7 @@ let name = "sunick2009";
 
   ssh = {
     enable = true;
+    enableDefaultConfig = true;
     includes = [
       (lib.mkIf pkgs.stdenv.hostPlatform.isLinux
         "/home/${user}/.ssh/config_external"
