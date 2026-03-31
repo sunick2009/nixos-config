@@ -27,6 +27,10 @@
       url = "github:gromgit/homebrew-fuse";
       flake = false;
     };
+    homebrew-angristan = {
+      url = "github:angristan/homebrew-tap";
+      flake = false;
+    };
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -37,7 +41,7 @@
     };
     emacs-overlay.url = "github:nix-community/emacs-overlay";
   };
-  outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, homebrew-fuse, home-manager, nixpkgs, disko, agenix, secrets, emacs-overlay } @inputs:
+  outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, homebrew-fuse, homebrew-angristan, home-manager, nixpkgs, disko, agenix, secrets, emacs-overlay } @inputs:
     let
       user = "susu";
       linuxSystems = [ "x86_64-linux" "aarch64-linux" ];
@@ -101,6 +105,7 @@
                   "homebrew/homebrew-cask" = homebrew-cask;
                   "homebrew/homebrew-bundle" = homebrew-bundle;
                   "gromgit/homebrew-fuse" = homebrew-fuse;
+                  "angristan/homebrew-tap" = homebrew-angristan;
                 };
                 mutableTaps = false;
                 autoMigrate = true;
