@@ -35,6 +35,7 @@ _:
   "homebrew/cask/linearmouse"
   "homebrew/cask/ghostty"
   "homebrew/cask/claude"
+  "homebrew/cask/macthrottle"
   # Entertainment Tools - Examples (uncomment as needed)
   "spotify"
   # "vlc"
