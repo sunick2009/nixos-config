@@ -60,6 +60,7 @@ with pkgs; [
 
   # Networking tools
   wireguard-tools
+  mtr
 
   # Python packages
   virtualenv
