@@ -6,6 +6,7 @@ _:
   "homebrew/cask/orbstack"
   #"visual-studio-code"
   "homebrew/cask/mockoon"
+  "homebrew/cask/devtunnel"
 
   # Productivity Tools
   #"raycast"
