@@ -39,9 +39,8 @@
       url = "git+ssh://git@github.com/sunick2009/susu-secret-nix.git";
       flake = false;
     };
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
   };
-  outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, homebrew-fuse, homebrew-angristan, home-manager, nixpkgs, disko, agenix, secrets, emacs-overlay } @inputs:
+  outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, homebrew-fuse, homebrew-angristan, home-manager, nixpkgs, disko, agenix, secrets } @inputs:
     let
       user = "susu";
       linuxSystems = [ "x86_64-linux" "aarch64-linux" ];
@@ -112,8 +111,6 @@
               };
             }
             ./hosts/darwin
-            # 由 flake input 提供 emacs-overlay
-            { nixpkgs.overlays = [ emacs-overlay.overlays.default ]; }
           ];
         }
       );

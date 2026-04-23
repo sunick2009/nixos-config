@@ -4,6 +4,7 @@ _:
   # Development Tools
   #"homebrew/cask/docker"
   "homebrew/cask/orbstack"
+  "homebrew/cask/neovide"
   #"visual-studio-code"
   "homebrew/cask/mockoon"
   "homebrew/cask/devtunnel"

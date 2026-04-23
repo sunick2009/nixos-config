@@ -31,10 +31,11 @@ shared-packages ++ [
 
   # Testing and development tools
   direnv
+  neovide
   rofi
   rofi-calc
   postgresql
-  libtool # for Emacs vterm
+  libtool
 
   # Screenshot and recording tools
   flameshot
@@ -45,7 +46,7 @@ shared-packages ++ [
   tree
   unixtools.ifconfig
   unixtools.netstat
-  xclip # For the org-download package in Emacs
+  xclip
   xorg.xwininfo # Provides a cursor to click and learn about windows
   xorg.xrandr
 

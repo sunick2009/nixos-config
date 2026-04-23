@@ -2,11 +2,6 @@
 
 let
   user = "susu";
-  # Define the content of your file as a derivation
-  myEmacsLauncher = pkgs.writeScript "emacs-launcher.command" ''
-    #!/bin/sh
-    emacsclient -c -n &
-  '';
   sharedFiles = import ../shared/files.nix { inherit config pkgs; };
   additionalFiles = import ./files.nix { inherit user config pkgs; };
 in
@@ -61,7 +56,6 @@ in
         file = lib.mkMerge [
           sharedFiles
           additionalFiles
-          { "emacs-launcher.command".source = myEmacsLauncher; }
           # tmux configuration
           #{ ".tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Code/my-dotfiles/.tmux.conf"; }
           # neovim configuration
@@ -82,6 +76,24 @@ in
           allow-loopback-pinentry
         '';
       };
+
+      home.activation.neovideFileAssociations = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        if [ -d "/Applications/Neovide.app" ]; then
+          NEOVIDE_BUNDLE_ID=$(/usr/bin/defaults read /Applications/Neovide.app/Contents/Info.plist CFBundleIdentifier 2>/dev/null || true)
+          if [ -n "$NEOVIDE_BUNDLE_ID" ]; then
+            for UTI in \
+              public.plain-text \
+              public.source-code \
+              public.script \
+              public.shell-script \
+              net.daringfireball.markdown \
+              public.json \
+              public.yaml; do
+              ${pkgs.duti}/bin/duti -s "$NEOVIDE_BUNDLE_ID" "$UTI" all >/dev/null 2>&1 || true
+            done
+          fi
+        fi
+      '';
 
       # Marked broken Oct 20, 2022 check later to remove this
       ## https://github.com/nix-community/home-manager/issues/3344
@@ -108,10 +120,6 @@ in
         { path = "/System/Applications/System Settings.app/"; }
         { path = "/Applications/Loopback.app/"; }
 
-        /* {
-          path = toString myEmacsLauncher;
-          section = "others";
-        } */
         {
           path = "${config.users.users.${user}.home}/Downloads";
           section = "others";
