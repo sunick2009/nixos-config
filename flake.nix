@@ -4,12 +4,17 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     agenix.url = "github:ryantm/agenix";
     home-manager.url = "github:nix-community/home-manager";
+    brew-src = {
+      url = "github:Homebrew/brew/5.1.7";
+      flake = false;
+    };
     darwin = {
       url = "github:LnL7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-homebrew = {
       url = "github:zhaofengli-wip/nix-homebrew";
+      inputs.brew-src.follows = "brew-src";
     };
     homebrew-bundle = {
       url = "github:homebrew/homebrew-bundle";
@@ -40,7 +45,7 @@
       flake = false;
     };
   };
-  outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, homebrew-fuse, homebrew-angristan, home-manager, nixpkgs, disko, agenix, secrets } @inputs:
+  outputs = { self, brew-src, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, homebrew-fuse, homebrew-angristan, home-manager, nixpkgs, disko, agenix, secrets } @inputs:
     let
       user = "susu";
       linuxSystems = [ "x86_64-linux" "aarch64-linux" ];
