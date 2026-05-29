@@ -7,6 +7,7 @@ shared-packages ++ [
   aria2
   pinentry_mac
   iina
+  betterdisplay
   # Disk usage analyzer
   grandperspective
   # development tools
