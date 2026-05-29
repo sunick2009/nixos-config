@@ -36,6 +36,10 @@
       url = "github:angristan/homebrew-tap";
       flake = false;
     };
+    steipete-tap = {
+      url = "github:steipete/homebrew-tap";
+      flake = false;
+    };
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -45,7 +49,7 @@
       flake = false;
     };
   };
-  outputs = { self, brew-src, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, homebrew-fuse, homebrew-angristan, home-manager, nixpkgs, disko, agenix, secrets } @inputs:
+  outputs = { self, brew-src, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, homebrew-fuse, homebrew-angristan, steipete-tap, home-manager, nixpkgs, disko, agenix, secrets } @inputs:
     let
       user = "susu";
       linuxSystems = [ "x86_64-linux" "aarch64-linux" ];
@@ -110,6 +114,7 @@
                   "homebrew/homebrew-bundle" = homebrew-bundle;
                   "gromgit/homebrew-fuse" = homebrew-fuse;
                   "angristan/homebrew-tap" = homebrew-angristan;
+                  "steipete/homebrew-tap" = steipete-tap;
                 };
                 mutableTaps = false;
                 autoMigrate = true;

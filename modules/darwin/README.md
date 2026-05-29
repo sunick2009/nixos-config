@@ -20,6 +20,20 @@ Audio output device management module that automatically switches audio output t
 ### casks.nix
 Homebrew cask packages configuration for GUI applications installation on macOS.
 
+### Homebrew taps (declarative)
+When `nix-homebrew.mutableTaps = false`, `brew bundle` cannot auto-tap new
+repositories. If a cask comes from a non-core tap (for example
+`steipete/tap/codexbar`), `brew` will fail with a permission error under
+`/opt/homebrew/Library/Taps`. Fix this by declaring the tap in the flake and
+`nix-homebrew.taps`, then refresh the lock and switch:
+
+1. Add a flake input for the tap (e.g. `github:steipete/homebrew-tap`,
+	`flake = false`).
+2. Add the tap to `nix-homebrew.taps` (e.g. `"steipete/homebrew-tap"`).
+3. Update the lock and switch:
+	- `nix flake update --update-input <tap-input>`
+	- `nix run .#build-switch`
+
 ### files.nix
 Static configuration files management for macOS-specific settings.
 

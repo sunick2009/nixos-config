@@ -37,6 +37,7 @@ _:
   "homebrew/cask/ghostty"
   "homebrew/cask/claude"
   "angristan/homebrew-tap/macthrottle"
+  "steipete/tap/codexbar"
   # Entertainment Tools - Examples (uncomment as needed)
   "spotify"
   # "vlc"
