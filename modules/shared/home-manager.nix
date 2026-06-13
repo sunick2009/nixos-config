@@ -1,8 +1,20 @@
 { config, pkgs, lib, ... }:
 
-let name = "sunick2009";
-    user = "susu";
-    email = "sunick2009@gmail.com"; in
+let
+  name = "sunick2009";
+  user = "susu";
+  email = "sunick2009@gmail.com";
+  atuinWithSecrets = pkgs.writeShellScriptBin "atuin" ''
+    env_file="$HOME/.atuin-sync.env"
+    if [ -f "$env_file" ]; then
+      set -a
+      . "$env_file"
+      set +a
+    fi
+
+    exec ${pkgs.atuin}/bin/atuin "$@"
+  '';
+in
 {
   # Shared shell configuration
   zsh = {
@@ -33,6 +45,10 @@ let name = "sunick2009";
     if [[ -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
       . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
       . /nix/var/nix/profiles/default/etc/profile.d/nix.sh
+    fi
+
+    if [[ -f "${config.home.homeDirectory}/.atuin-sync.env" ]]; then
+      source "${config.home.homeDirectory}/.atuin-sync.env"
     fi
 
     export GPG_TTY=$(tty)
@@ -275,6 +291,18 @@ let name = "sunick2009";
           )
         ];
       };
+    };
+  };
+
+  atuin = {
+    enable = true;
+    package = atuinWithSecrets;
+    settings = {
+      sync = {
+        records = true;
+      };
+      auto_sync = true;
+      sync_frequency = "1h";
     };
   };
 

@@ -39,6 +39,15 @@ in
     stateVersion = "21.05";
   };
 
+  home.activation.atuinSyncEnvLink = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    ln -sf /run/agenix/atuin-sync-env "${config.home.homeDirectory}/.atuin-sync.env"
+  '';
+
+  home.activation.atuinKeyLink = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    mkdir -p "${config.home.homeDirectory}/.local/share/atuin"
+    ln -sf /run/agenix/atuin-key "${config.home.homeDirectory}/.local/share/atuin/key"
+  '';
+
   # Use a dark theme
   gtk = {
     enable = true;

@@ -3,8 +3,23 @@
 let user = "susu"; in
 {
   age.identityPaths = [
-    "/home/${user}/.ssh/id_ed25519"
+    "/home/${user}/.ssh/id_ed25519_agenix"
   ];
+
+  age.secrets."atuin-sync-env" = {
+    # Use local secrets repo file directly to ensure it's available during activation
+    file = "${secrets}/atuin-sync.env.age";
+    mode = "600";
+    owner = user;
+    group = "wheel";
+  };
+
+  age.secrets."atuin-key" = {
+    file = "${secrets}/atuin.key.age";
+    mode = "600";
+    owner = user;
+    group = "wheel";
+  };
 
   # Your secrets go here
   #

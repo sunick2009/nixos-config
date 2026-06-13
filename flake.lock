@@ -309,11 +309,11 @@
     "secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1755529356,
-        "narHash": "sha256-v5IxHO4YNv798r6+3p7Yw5g6EAIJ9oMKphqQaR3N7qU=",
+        "lastModified": 1781367868,
+        "narHash": "sha256-Hpx9CKL69Vjm7WF204zifJV2XxNDjs4wF617n/qLeyE=",
         "ref": "refs/heads/main",
-        "rev": "bc757601d92ccf5121441051c31b5a8080c8d2eb",
-        "revCount": 1,
+        "rev": "2ef12a77c5fb55bb8298db678d2d1e0a4c5d4882",
+        "revCount": 4,
         "type": "git",
         "url": "ssh://git@github.com/sunick2009/susu-secret-nix.git"
       },
