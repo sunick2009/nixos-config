@@ -56,6 +56,7 @@ with pkgs; [
   unrar
   unzip
   neovim
+  waveterm
 
   # Networking tools
   wireguard-tools
