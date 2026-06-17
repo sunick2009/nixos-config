@@ -23,6 +23,8 @@ in
     casks = pkgs.callPackage ./casks.nix {};
     brews = [
       "gromgit/fuse/ntfs-3g-mac"
+      # for mole cleanup tool
+      "mole"
     ];
     onActivation = {
     # the following two options ensure that brew casks are updated when the system is also updated
