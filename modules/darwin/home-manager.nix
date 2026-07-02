@@ -80,8 +80,16 @@ in
       };
 
       home.activation.chezmoiApply = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        if command -v chezmoi >/dev/null 2>&1 && [ -d "$HOME/.local/share/chezmoi" ]; then
-          $DRY_RUN_CMD chezmoi apply --no-tty --exclude scripts 2>/dev/null || true
+        if command -v chezmoi >/dev/null 2>&1; then
+          CHEZMOI_CFG="$HOME/.config/chezmoi/chezmoi.toml"
+          CHEZMOI_SRC="$HOME/Code/my-dotfiles"
+          if [ ! -f "$CHEZMOI_CFG" ] && [ -d "$CHEZMOI_SRC" ]; then
+            # First time: init from local repo (non-interactive, skips prompts)
+            $DRY_RUN_CMD chezmoi init --source "$CHEZMOI_SRC" --no-tty 2>/dev/null || true
+          fi
+          if [ -f "$CHEZMOI_CFG" ]; then
+            $DRY_RUN_CMD chezmoi apply --no-tty --exclude scripts 2>/dev/null || true
+          fi
         fi
       '';
 
