@@ -79,6 +79,12 @@ in
         '';
       };
 
+      home.activation.chezmoiApply = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        if command -v chezmoi >/dev/null 2>&1 && [ -d "$HOME/.local/share/chezmoi" ]; then
+          $DRY_RUN_CMD chezmoi apply --no-tty 2>/dev/null || true
+        fi
+      '';
+
       home.activation.atuinSyncEnvLink = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
         ln -sf /run/agenix/atuin-sync-env "${config.home.homeDirectory}/.atuin-sync.env"
       '';
