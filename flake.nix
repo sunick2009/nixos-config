@@ -90,6 +90,21 @@
         "check-keys" = mkApp "check-keys" system;
         "rollback" = mkApp "rollback" system;
       };
+      mkNixosConfiguration = system: extraModules: nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = inputs;
+        modules = [
+          disko.nixosModules.disko
+          home-manager.nixosModules.home-manager {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.${user} = import ./modules/nixos/home-manager.nix;
+            };
+          }
+          ./hosts/nixos
+        ] ++ extraModules;
+      };
     in
     {
       devShells = forAllSystems devShell;
@@ -125,20 +140,20 @@
         }
       );
 
-      nixosConfigurations = nixpkgs.lib.genAttrs linuxSystems (system: nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = inputs;
-        modules = [
-          disko.nixosModules.disko
-          home-manager.nixosModules.home-manager {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.${user} = import ./modules/nixos/home-manager.nix;
-            };
-          }
-          ./hosts/nixos
-        ];
-     });
+      nixosConfigurations =
+        nixpkgs.lib.genAttrs linuxSystems (system: mkNixosConfiguration system [])
+        // {
+          ci-x86_64-linux = mkNixosConfiguration "x86_64-linux" [
+            ({ lib, ... }: {
+              networking = {
+                hostName = lib.mkForce "ci";
+                useDHCP = lib.mkForce true;
+                interfaces = lib.mkForce {};
+              };
+
+              disko.devices.disk.vdb.device = lib.mkForce "/dev/vda";
+            })
+          ];
+        };
   };
 }
