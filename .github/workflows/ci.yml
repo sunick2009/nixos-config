@@ -1,0 +1,52 @@
+name: Nix Config Validation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  # Fast evaluation on Linux — catches syntax errors, undefined variables, type errors
+  # Both NixOS and Darwin configs can be *evaluated* on Linux (pure functional, no build)
+  evaluate:
+    name: Evaluate nix expressions
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: cachix/install-nix-action@v27
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+
+      - name: Evaluate NixOS config (x86_64-linux)
+        run: |
+          nix eval .#nixosConfigurations.x86_64-linux.config.system.build.toplevel.outPath \
+            --override-input secrets path:./ci/stub-secrets
+
+      - name: Evaluate Darwin config (aarch64-darwin)
+        run: |
+          nix eval .#darwinConfigurations.aarch64-darwin.system.outPath \
+            --override-input secrets path:./ci/stub-secrets
+
+  # Full build on macOS — only on push to main (expensive runner)
+  # Verifies derivations actually build, not just evaluate
+  build-darwin:
+    name: Build darwin configuration
+    runs-on: macos-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: cachix/install-nix-action@v27
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build Darwin config (aarch64-darwin)
+        run: |
+          nix build .#darwinConfigurations.aarch64-darwin.system \
+            --override-input secrets path:./ci/stub-secrets \
+            --no-link
