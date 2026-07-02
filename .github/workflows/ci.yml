@@ -30,28 +30,24 @@ jobs:
           nix eval .#darwinConfigurations.aarch64-darwin.system.outPath \
             --override-input secrets path:./ci/stub-secrets
 
-  # Full build inside a NixOS Docker container — runs on every PR
+  # Full NixOS build on Linux — runs on every PR
   # nix build actually assembles the system closure; catches broken packages and
   # home-manager activation errors that nix eval misses.
   # Packages are fetched from cache.nixos.org so this is fast after the first run.
   build-nixos:
-    name: Build NixOS configuration (Docker)
+    name: Build NixOS configuration
     runs-on: ubuntu-latest
     needs: evaluate
-    container:
-      image: nixpkgs/nix-flakes:latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Configure nix
-        run: |
-          mkdir -p /etc/nix
-          cat >> /etc/nix/nix.conf <<EOF
-          experimental-features = nix-command flakes
-          access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
-          substituters = https://cache.nixos.org
-          trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
-          EOF
+      - uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+            substituters = https://cache.nixos.org
+            trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
 
       - name: Build NixOS system (CI x86_64-linux)
         run: |
