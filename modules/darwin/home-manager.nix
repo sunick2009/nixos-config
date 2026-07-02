@@ -82,10 +82,21 @@ in
       home.activation.chezmoiApply = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
         if command -v chezmoi >/dev/null 2>&1; then
           CHEZMOI_CFG="$HOME/.config/chezmoi/chezmoi.toml"
-          CHEZMOI_SRC="$HOME/Code/my-dotfiles"
+          CHEZMOI_SRC="${config.home.homeDirectory}/Code/my-dotfiles"
           if [ ! -f "$CHEZMOI_CFG" ] && [ -d "$CHEZMOI_SRC" ]; then
-            # First time: init from local repo (non-interactive, skips prompts)
-            $DRY_RUN_CMD chezmoi init --source "$CHEZMOI_SRC" --no-tty 2>/dev/null || true
+            mkdir -p "$HOME/.config/chezmoi"
+            cat > "$CHEZMOI_CFG" << TOMLEOF
+sourceDir = "${config.home.homeDirectory}/Code/my-dotfiles"
+
+[data]
+    name = "sunick2009"
+    email = "sunick2009@gmail.com"
+    installOhMyZsh = true
+    installFonts = true
+    changeShell = true
+    installNeovimPlugins = true
+    installTmuxPlugins = true
+TOMLEOF
           fi
           if [ -f "$CHEZMOI_CFG" ]; then
             $DRY_RUN_CMD chezmoi apply --no-tty --exclude scripts 2>/dev/null || true
