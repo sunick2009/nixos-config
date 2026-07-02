@@ -53,6 +53,7 @@ with pkgs; [
   ripgrep
   tree
   tmux
+  chezmoi
   unrar
   unzip
   neovim
