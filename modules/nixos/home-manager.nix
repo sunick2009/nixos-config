@@ -30,11 +30,7 @@ in
     username = "${user}";
     homeDirectory = "/home/${user}";
     packages = pkgs.callPackage ./packages.nix {};
-    file = shared-files // import ./files.nix { inherit user; } // {
-      # tmux is managed by chezmoi — no symlink needed here
-      # neovim configuration
-      ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Code/my-dotfiles/.config/nvim";
-    };
+    file = shared-files // import ./files.nix { inherit user; };
     stateVersion = "21.05";
   };
 

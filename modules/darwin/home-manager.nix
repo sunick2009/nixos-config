@@ -58,10 +58,6 @@ in
         file = lib.mkMerge [
           sharedFiles
           additionalFiles
-          # tmux configuration
-          #{ ".tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Code/my-dotfiles/.tmux.conf"; }
-          # neovim configuration
-          { ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Code/my-dotfiles/.config/nvim"; }
         ];
 
         stateVersion = "23.11";
