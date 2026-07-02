@@ -139,9 +139,4 @@ in
       ];
     };
   };
-  programs.tmux = {
-  enable = true;
-  # ... other tmux options ...
-   # Replace zsh with your desired shell (e.g., fish, bash)
-};
 }
