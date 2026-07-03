@@ -45,6 +45,15 @@ User-level configuration including:
 - Dock entries management
 - Application symlinks and dotfiles
 
+#### Dotfiles bootstrap
+On first activation, if `~/Code/my-dotfiles` already exists and
+`~/.config/chezmoi/chezmoi.toml` does not, the activation hook seeds the
+chezmoi config automatically and then runs `chezmoi apply`.
+
+This means a manual `chezmoi init` is not required for the standard
+migration path. The only prerequisite is that the dotfiles repository has
+already been cloned to `~/Code/my-dotfiles`.
+
 ### packages.nix
 System-level packages installation for macOS, extending shared packages with macOS-specific tools.
 
