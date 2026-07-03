@@ -46,13 +46,18 @@ User-level configuration including:
 - Application symlinks and dotfiles
 
 #### Dotfiles bootstrap
-On first activation, if `~/Code/my-dotfiles` already exists and
-`~/.config/chezmoi/chezmoi.toml` does not, the activation hook seeds the
-chezmoi config automatically and then runs `chezmoi apply`.
+Use `nix run .#bootstrap` to clone the dotfiles repository into
+`~/Code/my-dotfiles` when it is not present yet. If the repository URL is
+not known locally, the command prompts for it and then performs a normal
+`git clone`.
+
+After that, run your normal `nix run .#build-switch`. On first activation,
+if `~/Code/my-dotfiles` exists and `~/.config/chezmoi/chezmoi.toml` does
+not, the activation hook seeds the chezmoi config automatically and then
+runs `chezmoi apply`.
 
 This means a manual `chezmoi init` is not required for the standard
-migration path. The only prerequisite is that the dotfiles repository has
-already been cloned to `~/Code/my-dotfiles`.
+migration path.
 
 ### packages.nix
 System-level packages installation for macOS, extending shared packages with macOS-specific tools.
