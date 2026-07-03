@@ -9,9 +9,8 @@ Dotfiles are not injected directly from the flake output. The flow is:
 
 1. `build-switch` first runs `bootstrap`
 2. `bootstrap` ensures `~/Code/my-dotfiles` exists
-3. On macOS, `home.activation.chezmoiApply` seeds `~/.config/chezmoi/chezmoi.toml`
-   if needed, then runs `chezmoi apply`
-4. On NixOS, `build-switch` currently only guarantees the dotfiles repo is cloned
+3. On both macOS and NixOS, `home.activation.chezmoiApply` seeds
+   `~/.config/chezmoi/chezmoi.toml` if needed, then runs `chezmoi apply`
 
 ## Usage
 
@@ -40,6 +39,7 @@ This will:
 - clone `https://github.com/sunick2009/my-dotfiles.git` into `~/Code/my-dotfiles`
   if the directory is missing
 - switch the NixOS machine
+- apply dotfiles through the Home Manager activation hook
 
 ### Explicit bootstrap
 
@@ -95,10 +95,13 @@ sequenceDiagram
   end
   BOOT-->>BS: bootstrap complete
   BS->>NS: switch NixOS config
+  NS->>HM: run activation hooks
+  HM->>HM: seed chezmoi.toml if needed
+  HM->>CZ: chezmoi apply
 ```
 
 ## CI
 
 The existing CI validates evaluation and builds. It also includes a check
-for the bootstrap wiring so the `build-switch -> bootstrap` path does not
-silently regress.
+for the bootstrap and apply wiring so the `build-switch -> bootstrap ->
+chezmoi apply` path does not silently regress.

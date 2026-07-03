@@ -4,6 +4,7 @@ let
   user = "susu";
   sharedFiles = import ../shared/files.nix { inherit config pkgs; };
   additionalFiles = import ./files.nix { inherit user config pkgs; };
+  chezmoiApply = pkgs.writeShellScriptBin "chezmoi-apply" (builtins.readFile ../../scripts/chezmoi-apply.sh);
 in
 {
   imports = [
@@ -76,28 +77,8 @@ in
       };
 
       home.activation.chezmoiApply = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        if command -v chezmoi >/dev/null 2>&1; then
-          CHEZMOI_CFG="$HOME/.config/chezmoi/chezmoi.toml"
-          CHEZMOI_SRC="${config.home.homeDirectory}/Code/my-dotfiles"
-          if [ ! -f "$CHEZMOI_CFG" ] && [ -d "$CHEZMOI_SRC" ]; then
-            mkdir -p "$HOME/.config/chezmoi"
-            cat > "$CHEZMOI_CFG" << TOMLEOF
-sourceDir = "${config.home.homeDirectory}/Code/my-dotfiles"
-
-[data]
-    name = "sunick2009"
-    email = "sunick2009@gmail.com"
-    installOhMyZsh = true
-    installFonts = true
-    changeShell = true
-    installNeovimPlugins = true
-    installTmuxPlugins = true
-TOMLEOF
-          fi
-          if [ -f "$CHEZMOI_CFG" ]; then
-            $DRY_RUN_CMD chezmoi apply --no-tty --exclude scripts 2>/dev/null || true
-          fi
-        fi
+        CHEZMOI_SRC="${config.home.homeDirectory}/Code/my-dotfiles" \
+          ${chezmoiApply}/bin/chezmoi-apply
       '';
 
       home.activation.atuinSyncEnvLink = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
