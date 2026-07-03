@@ -6,6 +6,15 @@ on:
   pull_request:
 
 jobs:
+  verify-bootstrap:
+    name: Verify dotfiles bootstrap flow
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify bootstrap and build-switch wiring
+        run: ./scripts/ci-verify-bootstrap.sh
+
   # Fast evaluation on Linux — catches syntax errors, undefined variables, type errors
   # Both NixOS and Darwin configs can be *evaluated* on Linux (pure functional, no build)
   evaluate:
