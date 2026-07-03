@@ -7,30 +7,19 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 DOTFILES_DIR="${DOTFILES_DIR:-$HOME/Code/my-dotfiles}"
-DOTFILES_REPO_URL="${DOTFILES_REPO_URL:-}"
+DOTFILES_REPO_URL="${DOTFILES_REPO_URL:-https://github.com/sunick2009/my-dotfiles.git}"
+DOTFILES_REPO_BRANCH="${DOTFILES_REPO_BRANCH:-feat/chezmoi-non-nix-migration}"
 
 _print() {
   echo -e "$1"
 }
 
-_prompt() {
-  local message="$1"
-  local variable="$2"
-
-  _print "$message"
-  read -r "$variable"
-}
-
 if [ -d "$DOTFILES_DIR/.git" ]; then
   _print "${GREEN}Dotfiles repository already exists at $DOTFILES_DIR${NC}"
 else
-  if [ -z "$DOTFILES_REPO_URL" ]; then
-    _prompt "${YELLOW}Please enter your dotfiles repository URL: ${NC}" DOTFILES_REPO_URL
-  fi
-
   mkdir -p "$(dirname "$DOTFILES_DIR")"
-  _print "${YELLOW}Cloning dotfiles into $DOTFILES_DIR...${NC}"
-  git clone "$DOTFILES_REPO_URL" "$DOTFILES_DIR"
+  _print "${YELLOW}Cloning dotfiles into $DOTFILES_DIR from ${DOTFILES_REPO_URL} (${DOTFILES_REPO_BRANCH})...${NC}"
+  git clone --branch "$DOTFILES_REPO_BRANCH" --single-branch "$DOTFILES_REPO_URL" "$DOTFILES_DIR"
 fi
 
 _print "${GREEN}Dotfiles bootstrap complete.${NC}"

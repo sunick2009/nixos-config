@@ -46,15 +46,14 @@ User-level configuration including:
 - Application symlinks and dotfiles
 
 #### Dotfiles bootstrap
-Use `nix run .#bootstrap` to clone the dotfiles repository into
-`~/Code/my-dotfiles` when it is not present yet. If the repository URL is
-not known locally, the command prompts for it and then performs a normal
-`git clone`.
+`nix run .#build-switch` now checks whether `~/Code/my-dotfiles` exists
+before switching. If it is missing, the bootstrap step automatically clones
+the public dotfiles repo from the `feat/chezmoi-non-nix-migration` branch
+into that location first.
 
-After that, run your normal `nix run .#build-switch`. On first activation,
-if `~/Code/my-dotfiles` exists and `~/.config/chezmoi/chezmoi.toml` does
-not, the activation hook seeds the chezmoi config automatically and then
-runs `chezmoi apply`.
+On first activation, if `~/Code/my-dotfiles` exists and
+`~/.config/chezmoi/chezmoi.toml` does not, the activation hook seeds the
+chezmoi config automatically and then runs `chezmoi apply`.
 
 This means a manual `chezmoi init` is not required for the standard
 migration path.
