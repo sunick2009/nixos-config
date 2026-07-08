@@ -5,6 +5,20 @@ let
   sharedFiles = import ../shared/files.nix { inherit config pkgs; };
   additionalFiles = import ./files.nix { inherit user config pkgs; };
   chezmoiApply = pkgs.writeShellScriptBin "chezmoi-apply" (builtins.readFile ../../scripts/chezmoi-apply.sh);
+  chezmoiPath = lib.makeBinPath [
+    pkgs.bash
+    pkgs.coreutils
+    pkgs.curl
+    pkgs.findutils
+    pkgs.gawk
+    pkgs.git
+    pkgs.gnugrep
+    pkgs.gnused
+    pkgs.jq
+    pkgs.neovim
+    pkgs.tmux
+    pkgs.zsh
+  ];
 in
 {
   imports = [
@@ -77,6 +91,8 @@ in
       };
 
       home.activation.chezmoiApply = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        CHEZMOI_BIN="${pkgs.chezmoi}/bin/chezmoi" \
+        CHEZMOI_PATH_PREFIX="${chezmoiPath}" \
         CHEZMOI_SRC="${config.home.homeDirectory}/Code/my-dotfiles" \
           ${chezmoiApply}/bin/chezmoi-apply
       '';

@@ -6,6 +6,20 @@ let
   shared-programs = import ../shared/home-manager.nix { inherit config pkgs lib; };
   shared-files = import ../shared/files.nix { inherit config pkgs; };
   chezmoiApply = pkgs.writeShellScriptBin "chezmoi-apply" (builtins.readFile ../../scripts/chezmoi-apply.sh);
+  chezmoiPath = lib.makeBinPath [
+    pkgs.bash
+    pkgs.coreutils
+    pkgs.curl
+    pkgs.findutils
+    pkgs.gawk
+    pkgs.git
+    pkgs.gnugrep
+    pkgs.gnused
+    pkgs.jq
+    pkgs.neovim
+    pkgs.tmux
+    pkgs.zsh
+  ];
 
   polybar-user_modules = builtins.readFile (pkgs.replaceVars ./config/polybar/user_modules.ini {
     packages = "${xdg_configHome}/polybar/bin/check-nixos-updates.sh";
@@ -45,6 +59,8 @@ in
   '';
 
   home.activation.chezmoiApply = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    CHEZMOI_BIN="${pkgs.chezmoi}/bin/chezmoi" \
+    CHEZMOI_PATH_PREFIX="${chezmoiPath}" \
     CHEZMOI_SRC="${config.home.homeDirectory}/Code/my-dotfiles" \
       ${chezmoiApply}/bin/chezmoi-apply
   '';
