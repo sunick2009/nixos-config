@@ -67,11 +67,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1781761792,
-        "narHash": "sha256-rCPytmKNjctLloB6UgK5CRrHSwV4b0ygxtJLPPp8R14=",
+        "lastModified": 1783395956,
+        "narHash": "sha256-AAbexQvDoK+6GFJdhY6kqjA+6ECKRkidgWxkn4gMwAA=",
         "owner": "LnL7",
         "repo": "nix-darwin",
-        "rev": "a1fa429e945becaf60468600daf649be4ba0350c",
+        "rev": "d5bd9cd77aea4c0a8f49e7fd85545671a208ed15",
         "type": "github"
       },
       "original": {
@@ -127,11 +127,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1783005591,
-        "narHash": "sha256-NcLHV5uBAeggDUE2wPbKszjfyaSLsoqaYt7izOphkZw=",
+        "lastModified": 1783618078,
+        "narHash": "sha256-F43DGcBoIO8xOZFAfodg3jy0VghB9NGdb6xbTYAIx1A=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "f469c79b955609d6a8fdd9e689be76a93b1621d7",
+        "rev": "144f4e36d0186195037da9fce80a727108978070",
         "type": "github"
       },
       "original": {
@@ -175,11 +175,11 @@
     "homebrew-cask": {
       "flake": false,
       "locked": {
-        "lastModified": 1783004756,
-        "narHash": "sha256-6vcykJ004Fh2FYOzwmYDl0slHpl7mcNvJsRgrX1M7iQ=",
+        "lastModified": 1783672374,
+        "narHash": "sha256-L9idUXGqQMTaKMinFK4TtWoRR9Hq8phc8Nq8qc0vQS8=",
         "owner": "homebrew",
         "repo": "homebrew-cask",
-        "rev": "4327ba3ed422c3f56aa4cc3501b88fa75b50d7fb",
+        "rev": "af2f25c901c6dca6a76cd7985fe6a02ebbab7eba",
         "type": "github"
       },
       "original": {
@@ -191,11 +191,11 @@
     "homebrew-core": {
       "flake": false,
       "locked": {
-        "lastModified": 1783004532,
-        "narHash": "sha256-HpsW8SQlnNN8O1poWMqRvyQYMlAhZlSWHE4hUjdpyH4=",
+        "lastModified": 1783672360,
+        "narHash": "sha256-6SFDDkDm6Xvn0ejHm0rb6fOtk2BAzV/uynkk4kbU4K0=",
         "owner": "homebrew",
         "repo": "homebrew-core",
-        "rev": "903002c316be3210924e1c11859275e28b0cc309",
+        "rev": "9ef4fb95e6d88577ead1a573887adf0b60c0d786",
         "type": "github"
       },
       "original": {
@@ -258,11 +258,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1782175435,
-        "narHash": "sha256-EMzXKmnOtBQ2MnvpiNOm7E+kOMvdPrIKaeg52Tip2Uk=",
+        "lastModified": 1782948114,
+        "narHash": "sha256-AXmz9ho4Lud5CsbrZsuSVwpQZ4o5FgZ1chxBn5cJ8+0=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "89570f24e97e614aa34aa9ab1c927b6578a43775",
+        "rev": "9e92285f211dad236540fd617d7e30e0b99bc0e1",
         "type": "github"
       },
       "original": {
@@ -274,11 +274,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1782723713,
-        "narHash": "sha256-oPXCU/SSUokcGaJREHibG1CBX3+s/W7orDWQOZDsEeQ=",
+        "lastModified": 1783224372,
+        "narHash": "sha256-8i/87eeoqiGE4yOTjwSA3Eh/ziJRQEmd/unYU+K27sk=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "b5aa0fbd538984f6e3d201be0005b4463d8b09f8",
+        "rev": "d407951447dcd00442e97087bf374aad70c04cea",
         "type": "github"
       },
       "original": {
@@ -309,11 +309,11 @@
     "secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1781367868,
-        "narHash": "sha256-Hpx9CKL69Vjm7WF204zifJV2XxNDjs4wF617n/qLeyE=",
+        "lastModified": 1783664549,
+        "narHash": "sha256-K481H8eAhbRiPXYp4e4wTsSrM30i+KsmW5q4KP7uVy0=",
         "ref": "refs/heads/main",
-        "rev": "2ef12a77c5fb55bb8298db678d2d1e0a4c5d4882",
-        "revCount": 4,
+        "rev": "9dcdc5692e21ae678325a6a44ab9f6d55869e9ee",
+        "revCount": 5,
         "type": "git",
         "url": "ssh://git@github.com/sunick2009/susu-secret-nix.git"
       },
@@ -325,11 +325,11 @@
     "steipete-tap": {
       "flake": false,
       "locked": {
-        "lastModified": 1782991924,
-        "narHash": "sha256-cO9F7yPQBlaidggMduccNMKKrlVdEhV/LjtfvjsX+S0=",
+        "lastModified": 1783609924,
+        "narHash": "sha256-JX/mycyIfGLj8C7KD2t0mpJGJAyL4TRh539UeU4+R94=",
         "owner": "steipete",
         "repo": "homebrew-tap",
-        "rev": "e8a1727adc5b5c16ac869cad4ddefc16f7eb9384",
+        "rev": "7edd77f0fe5153a404dab89f44a61e2443b17c69",
         "type": "github"
       },
       "original": {
