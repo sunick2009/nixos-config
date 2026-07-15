@@ -8,6 +8,7 @@ shared-packages ++ [
   pinentry_mac
   iina
   betterdisplay
+  officecli
   # Disk usage analyzer
   grandperspective
   # development tools
