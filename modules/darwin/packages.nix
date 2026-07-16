@@ -14,6 +14,7 @@ shared-packages ++ [
   # development tools
   dbeaver-bin
   claude-code
+  gh
   # gaming
   prismlauncher
   # TUI File manager
