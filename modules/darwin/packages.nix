@@ -15,6 +15,7 @@ shared-packages ++ [
   dbeaver-bin
   claude-code
   gh
+  bruno
   # gaming
   prismlauncher
   # TUI File manager
