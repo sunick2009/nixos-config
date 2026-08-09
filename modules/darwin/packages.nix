@@ -14,6 +14,7 @@ shared-packages ++ [
   # development tools
   dbeaver-bin
   claude-code
+  herdr
   gh
   bruno
   # gaming

@@ -32,6 +32,7 @@ _:
   "homebrew/cask/anydesk"
   "homebrew/cask/macfuse"
   "homebrew/cask/mounty"
+  "homebrew/cask/bettercmdtab"
   # Control Mouse Sensitivity
   "homebrew/cask/linearmouse"
   "homebrew/cask/ghostty"
