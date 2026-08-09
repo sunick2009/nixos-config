@@ -5,7 +5,7 @@
     agenix.url = "github:ryantm/agenix";
     home-manager.url = "github:nix-community/home-manager";
     brew-src = {
-      url = "github:Homebrew/brew/5.1.7";
+      url = "github:Homebrew/brew/6.0.15";
       flake = false;
     };
     darwin = {
@@ -52,6 +52,7 @@
   outputs = { self, brew-src, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, homebrew-fuse, homebrew-angristan, steipete-tap, home-manager, nixpkgs, disko, agenix, secrets } @inputs:
     let
       user = "susu";
+      homebrewVersion = (builtins.fromJSON (builtins.readFile ./flake.lock)).nodes.brew-src.original.ref;
       linuxSystems = [ "x86_64-linux" "aarch64-linux" ];
       darwinSystems = [ "aarch64-darwin" "x86_64-darwin" ];
       forAllSystems = f: nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems) f;
@@ -125,6 +126,8 @@
                 enable = true;
                 # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
                 enableRosetta = true;
+                # Homebrew cannot derive its version from nix-homebrew's synthetic Git repository.
+                extraEnv.HOMEBREW_VERSION = homebrewVersion;
                 taps = {
                   "homebrew/homebrew-core" = homebrew-core;
                   "homebrew/homebrew-cask" = homebrew-cask;
