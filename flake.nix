@@ -40,6 +40,10 @@
       url = "github:steipete/homebrew-tap";
       flake = false;
     };
+    homebrew-orca = {
+      url = "github:stablyai/homebrew-orca";
+      flake = false;
+    };
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -49,7 +53,7 @@
       flake = false;
     };
   };
-  outputs = { self, brew-src, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, homebrew-fuse, homebrew-angristan, steipete-tap, home-manager, nixpkgs, disko, agenix, secrets } @inputs:
+  outputs = { self, brew-src, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, homebrew-fuse, homebrew-angristan, steipete-tap, homebrew-orca, home-manager, nixpkgs, disko, agenix, secrets } @inputs:
     let
       user = "susu";
       homebrewVersion = (builtins.fromJSON (builtins.readFile ./flake.lock)).nodes.brew-src.original.ref;
@@ -135,7 +139,9 @@
                   "gromgit/homebrew-fuse" = homebrew-fuse;
                   "angristan/homebrew-tap" = homebrew-angristan;
                   "steipete/homebrew-tap" = steipete-tap;
+                  "stablyai/homebrew-orca" = homebrew-orca;
                 };
+                trust.casks = [ "stablyai/orca/orca" ];
                 mutableTaps = false;
                 autoMigrate = true;
               };

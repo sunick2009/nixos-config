@@ -8,6 +8,7 @@ _:
   #"visual-studio-code"
   "homebrew/cask/mockoon"
   "homebrew/cask/devtunnel"
+  "stablyai/orca/orca"
 
   # Productivity Tools
   #"raycast"
