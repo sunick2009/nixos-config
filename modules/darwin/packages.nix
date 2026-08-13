@@ -17,6 +17,7 @@ shared-packages ++ [
   herdr
   gh
   bruno
+  ansible
   # gaming
   prismlauncher
   # TUI File manager
