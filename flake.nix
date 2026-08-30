@@ -106,6 +106,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
+              backupFileExtension = "backup";
               users.${user} = import ./modules/nixos/home-manager.nix;
             };
           }
