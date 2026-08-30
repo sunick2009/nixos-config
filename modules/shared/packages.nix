@@ -22,6 +22,7 @@ with pkgs; [
   age-plugin-yubikey
   gnupg
   libfido2
+  yubikey-manager
 
   # Cloud-related tools and SDKs
   docker
