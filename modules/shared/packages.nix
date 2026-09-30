@@ -74,6 +74,7 @@ with pkgs; [
   codex
   opencode
   poetry
+  glab
   
   # go packages
   go
