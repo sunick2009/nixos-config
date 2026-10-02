@@ -4,17 +4,12 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     agenix.url = "github:ryantm/agenix";
     home-manager.url = "github:nix-community/home-manager";
-    brew-src = {
-      url = "github:Homebrew/brew/6.0.15";
-      flake = false;
-    };
     darwin = {
       url = "github:LnL7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-homebrew = {
       url = "github:zhaofengli-wip/nix-homebrew";
-      inputs.brew-src.follows = "brew-src";
     };
     homebrew-bundle = {
       url = "github:homebrew/homebrew-bundle";
@@ -53,10 +48,9 @@
       flake = false;
     };
   };
-  outputs = { self, brew-src, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, homebrew-fuse, homebrew-angristan, steipete-tap, homebrew-orca, home-manager, nixpkgs, disko, agenix, secrets } @inputs:
+  outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, homebrew-fuse, homebrew-angristan, steipete-tap, homebrew-orca, home-manager, nixpkgs, disko, agenix, secrets } @inputs:
     let
       user = "susu";
-      homebrewVersion = (builtins.fromJSON (builtins.readFile ./flake.lock)).nodes.brew-src.original.ref;
       linuxSystems = [ "x86_64-linux" "aarch64-linux" ];
       darwinSystems = [ "aarch64-darwin" "x86_64-darwin" ];
       forAllSystems = f: nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems) f;
@@ -125,14 +119,14 @@
           modules = [
             home-manager.darwinModules.home-manager
             nix-homebrew.darwinModules.nix-homebrew
-            {
+            ({ config, ... }: {
               nix-homebrew = {
                 inherit user;
                 enable = true;
                 # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
                 enableRosetta = true;
                 # Homebrew cannot derive its version from nix-homebrew's synthetic Git repository.
-                extraEnv.HOMEBREW_VERSION = homebrewVersion;
+                extraEnv.HOMEBREW_VERSION = config.nix-homebrew.package.version;
                 taps = {
                   "homebrew/homebrew-core" = homebrew-core;
                   "homebrew/homebrew-cask" = homebrew-cask;
@@ -146,7 +140,7 @@
                 mutableTaps = false;
                 autoMigrate = true;
               };
-            }
+            })
             ./hosts/darwin
           ];
         }

@@ -221,7 +221,7 @@ in
 
   ssh = {
     enable = true;
-    enableDefaultConfig = true;
+    enableDefaultConfig = false;
     includes = [
       (lib.mkIf pkgs.stdenv.hostPlatform.isLinux
         "/home/${user}/.ssh/config_external"
@@ -230,17 +230,24 @@ in
         "/Users/${user}/.ssh/config_external"
       )
     ];
-    matchBlocks = {
+    settings = {
       "github.com" = {
-        identitiesOnly = true;
-        identityFile = [
-          (lib.mkIf pkgs.stdenv.hostPlatform.isLinux
-            "/home/${user}/.ssh/id_ed25519"
-          )
-          (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin
-            "/Users/${user}/.ssh/id_ed25519"
-          )
-        ];
+        IdentitiesOnly = true;
+        IdentityFile =
+          lib.optional pkgs.stdenv.hostPlatform.isLinux "/home/${user}/.ssh/id_ed25519"
+          ++ lib.optional pkgs.stdenv.hostPlatform.isDarwin "/Users/${user}/.ssh/id_ed25519";
+      };
+      "*" = {
+        ForwardAgent = false;
+        AddKeysToAgent = "no";
+        Compression = false;
+        ServerAliveInterval = 0;
+        ServerAliveCountMax = 3;
+        HashKnownHosts = false;
+        UserKnownHostsFile = "~/.ssh/known_hosts";
+        ControlMaster = "no";
+        ControlPath = "~/.ssh/master-%r@%n:%p";
+        ControlPersist = "no";
       };
     };
   };
