@@ -41,6 +41,7 @@ shared-packages ++ [
   flameshot
 
   # Text and terminal utilities
+  waveterm
   feh # Manage wallpapers
   screenkey
   tree

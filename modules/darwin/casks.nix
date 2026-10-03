@@ -5,6 +5,7 @@ _:
   #"homebrew/cask/docker"
   "homebrew/cask/orbstack"
   "homebrew/cask/neovide"
+  "homebrew/cask/wave"
   #"visual-studio-code"
   "homebrew/cask/mockoon"
   "homebrew/cask/devtunnel"

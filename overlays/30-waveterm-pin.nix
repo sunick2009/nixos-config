@@ -3,8 +3,8 @@ let
   version = "0.14.5";
   selectSystem = attrs: attrs.${prev.stdenv.hostPlatform.system};
 in
-{
-  # Temporary pin until nixpkgs updates waveterm past 0.13.1.
+prev.lib.optionalAttrs prev.stdenv.hostPlatform.isLinux {
+  # Keep the Linux pin; macOS installs Wave through Homebrew.
   waveterm = prev.waveterm.overrideAttrs (_old: {
     inherit version;
 
