@@ -74,6 +74,7 @@ with pkgs; [
   opencode
   poetry
   glab
+  reptor
   
   # go packages
   go
